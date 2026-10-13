@@ -12,17 +12,7 @@
 % bibtex is not recommended: this project is configured for biber.
 
 % 字体设置 / Font settings
-\usepackage{fontspec} % 字体选择 / Font selection
-\usepackage{xeCJK} % 中文字体支持 / Chinese font support
-
-% 设置中文字体 / Set Chinese fonts
-\setCJKsansfont[AutoFakeBold]{LXGW WenKai}
-\setCJKmainfont{LXGW WenKai}
-\setCJKmonofont{Sarasa Mono SC}
-
-% 设置英文字体 / Set English fonts
-\setmainfont{Times New Roman} % 主字体 / Main font
-\setsansfont{Arial} % 无衬线字体 / Sans-serif font
+\input{fonts-setup.tex} % 直接读取仓库字体，无须安装；无 fonts/ 时自动使用 Fandol
 
 % Overleaf 方案（无须自定义字体）/ Overleaf solution (no need to customize fonts)
 % \setCJKsansfont{FandolHei}[
@@ -40,17 +30,17 @@
 \addbibresource{ref.bib} % 添加参考文献文件 / Add bibliography file
 
 % 文档信息 / Document information
-\author{篠原 はるな}
-\title{SDU Beamer Theme}
-\subtitle{山大风格 Beamer 模板与简易指南}
-\institute{山东大学 软件学院}
+\author[ACM-ICPC]{汇报人}
+\title[算法训练与竞赛交流]{哈尔滨理工大学 ACM-ICPC 集训队}
+\subtitle{算法训练与竞赛交流 Beamer 模板}
+\institute[哈理工集训队]{哈尔滨理工大学 ACM-ICPC 集训队}
 \date{\today}
 
-\usetheme{SDU} % 等价于旧写法 \usepackage{SDU} / equivalent to the legacy \usepackage{SDU}
+\usetheme{HRBUST} % 旧写法 \usetheme{SDU} 和 \usepackage{SDU} 仍然兼容
 
 % 让引用、目录、链接以主题色显示，便于辨认
 % Color citations, TOC entries, and links in the theme color
-\hypersetup{colorlinks=true, linkcolor=., citecolor=peaking, urlcolor=peaking!70!black}
+\hypersetup{colorlinks=true, linkcolor=., citecolor=hrbustblue, urlcolor=hrbustnavy}
 
 \begin{document}
 
@@ -59,7 +49,7 @@
     \titlepage
     \begin{figure}[htpb]
         \begin{center}
-            \includegraphics[width=0.1\linewidth]{img/Example/SDU.eps}
+            \hrbustlogo
         \end{center}
     \end{figure}
 \end{frame}
@@ -74,12 +64,13 @@
 \subsection{主题特性}
 
 \begin{frame}{模板简介}
-    本模板是面向山东大学的 \LaTeX{} Beamer 主题，适用于学术汇报、
-    开题与答辩等场合，主要特性包括：
+    本模板面向哈尔滨理工大学 ACM-ICPC 集训队，适用于算法讲解、
+    训练总结与竞赛交流，主要特性包括：
     \begin{itemize}
-        \item 默认 \(16:9\) 宽屏长宽比，配色以山大红（CMYK 26/100/100/28）为主色
+        \item 保留原版 \(16:9\) 版式、顶部导航、圆点进度与三段式页脚
+        \item 使用哈理工校徽，主色为科技蓝（\texttt{\#005BAC}）
         \item 使用 Xe\LaTeX{} 编译，通过 \texttt{xeCJK} 支持中文排版
-        \item 配色集中在 \texttt{beamercolorthemeSDU.sty}，改一处即可整体换色
+        \item 配色集中在 \texttt{beamercolorthemeHRBUST.sty}，可统一调整
         \item 每个 section 和 subsection 前自动插入目录页
         \item 预置代码高亮、三线表、参考文献等常用配置
     \end{itemize}
@@ -94,11 +85,10 @@
         \item \textbf{THU-Beamer-Theme}：清华大学 TUNA 协会维护的主题 \cite{thu}
         \item \textbf{PKU-Beamer-Theme}：在 THU 主题基础上为北大改配色的衍生版本 \cite{pku}
         \item \textbf{SDU-Beamer-Theme}：由 Ura 在 PKU 主题基础上修改配色与布局而成 \cite{origin}
-        \item \textbf{本仓库}：在 SDU 主题基础上重构：默认 \(16:9\) 长宽比、
-              配色抽离为 \texttt{beamercolorthemeSDU.sty}、
-              补充中英文注释、接入 GitHub Actions 自动编译
+        \item \textbf{HRBUST ACM-ICPC}：基于 SDU 经典版 \cite{sdu}，保留布局，
+              更换哈理工校徽与队名，统一科技蓝、深海军蓝和辅助色
     \end{itemize}
-    校徽矢量图来自 \cite{sdulogo}。
+    校徽来自哈尔滨理工大学官网 \cite{hrbustlogo}。
 \end{frame}
 
 \subsection{项目结构}
@@ -111,8 +101,9 @@
             文件                         & 作用              \\
             \midrule
             \texttt{slide.tex}         & 主文档（本文件）        \\
-            \texttt{beamerthemeSDU.sty}       & 主题样式：页脚、目录、常用宏包 \\
-            \texttt{beamercolorthemeSDU.sty}  & 配色定义，可整体替换      \\
+            \texttt{beamerthemeHRBUST.sty}       & 主题样式：页脚、目录、常用宏包 \\
+            \texttt{beamercolorthemeHRBUST.sty}  & 配色定义，可整体替换      \\
+            \texttt{template.tex}      & 集训队训练汇报起步模板    \\
             \texttt{ref.bib}           & 参考文献条目          \\
             \texttt{img/}              & 插图目录            \\
             \texttt{fonts/}            & 随仓库分发的中文字体      \\
@@ -146,7 +137,7 @@ latexmk          # 读取 .latexmkrc，自动完成全部编译步骤
         \begin{column}{0.48\textwidth}
             \begin{itemize}[<+-| alert@+>]
                 \item 无序列表：\texttt{itemize}
-                \item 逐项出现并标红：\texttt{[<+-| alert@+>]}
+                \item 逐项出现并强调：\texttt{[<+-| alert@+>]}
                       \begin{itemize}
                           \item 支持二级嵌套
                       \end{itemize}
@@ -345,7 +336,7 @@ latexmk          # 读取 .latexmkrc，自动完成全部编译步骤
             \begin{lstlisting}[language=C]
 #include <stdio.h>
 int main(void) {
-    printf("Hello, SDU!\n");
+    printf("Hello, ICPC!\n");
     return 0;
 }
 \end{lstlisting}
@@ -370,7 +361,7 @@ def fib(n):
               \texttt{\textbackslash cite\{key\}} 引用，
               例如 \cite{texbook} 与 \cite{beamerug}
         \item 软件与模板类资源可用 \texttt{@misc}/\texttt{@manual} 条目
-              记录仓库地址，见 \cite{thu,pku,origin,sdulogo}
+              记录仓库地址，见 \cite{thu,pku,origin,sdu}
         \item 使用 \texttt{numeric-comp} 引用样式，由 \texttt{biber} 处理，
               引用标号以主题色显示
     \end{itemize}

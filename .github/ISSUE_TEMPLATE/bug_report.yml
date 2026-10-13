@@ -1,0 +1,29 @@
+name: 编译或版面问题
+description: 报告编译失败、字体异常、文字溢出或显示问题。
+title: "[Bug] "
+body:
+  - type: input
+    id: environment
+    attributes:
+      label: 编译环境
+      description: 操作系统、TeX 发行版及 XeLaTeX 版本，或填写 Overleaf。
+    validations:
+      required: true
+  - type: textarea
+    id: reproduction
+    attributes:
+      label: 重现步骤与最小示例
+      description: 说明使用的文件、执行的命令及相关 LaTeX 片段。
+    validations:
+      required: true
+  - type: textarea
+    id: result
+    attributes:
+      label: 实际结果与预期结果
+    validations:
+      required: true
+  - type: textarea
+    id: evidence
+    attributes:
+      label: 编译日志或截图
+      description: 粘贴相关错误信息，或附上版面截图。

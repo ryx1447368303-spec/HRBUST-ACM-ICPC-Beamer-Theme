@@ -1,157 +1,174 @@
-# SDU-Beamer-Theme
+# 哈尔滨理工大学 ACM-ICPC 集训队 Beamer 主题
 
-[![Build](https://img.shields.io/github/actions/workflow/status/ShinoharaHaruna/SDU-Beamer-Theme/online_compile.yml?branch=main)](https://github.com/ShinoharaHaruna/SDU-Beamer-Theme/actions/workflows/online_compile.yml)
-[![License](https://img.shields.io/github/license/ShinoharaHaruna/SDU-Beamer-Theme)](LICENSE)
-[![Last commit](https://img.shields.io/github/last-commit/ShinoharaHaruna/SDU-Beamer-Theme)](https://github.com/ShinoharaHaruna/SDU-Beamer-Theme/commits)
-[![Release](https://img.shields.io/github/v/release/ShinoharaHaruna/SDU-Beamer-Theme)](https://github.com/ShinoharaHaruna/SDU-Beamer-Theme/releases)
-![Engine](https://img.shields.io/badge/engine-XeLaTeX-blue)
-[![Open in Overleaf](https://img.shields.io/badge/Open%20in-Overleaf-47A141?logo=overleaf&logoColor=white)](https://www.overleaf.com/docs?snip_uri=https://github.com/ShinoharaHaruna/SDU-Beamer-Theme/releases/latest/download/SDU-Beamer-Theme-overleaf-xelatex.zip&main_document=slide.tex)
+[![Build](https://github.com/ryx1447368303-spec/HRBUST-ACM-ICPC-Beamer-Theme/actions/workflows/online_compile.yml/badge.svg)](https://github.com/ryx1447368303-spec/HRBUST-ACM-ICPC-Beamer-Theme/actions/workflows/online_compile.yml)
+[![Release](https://img.shields.io/github/v/release/ryx1447368303-spec/HRBUST-ACM-ICPC-Beamer-Theme?color=005BAC)](https://github.com/ryx1447368303-spec/HRBUST-ACM-ICPC-Beamer-Theme/releases/latest)
+[![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
+![Engine: XeLaTeX](https://img.shields.io/badge/Engine-XeLaTeX-005BAC)
+[![Open in Overleaf](https://img.shields.io/badge/Open%20in-Overleaf-47A141?logo=overleaf&logoColor=white)](https://www.overleaf.com/docs?snip_uri=https://github.com/ryx1447368303-spec/HRBUST-ACM-ICPC-Beamer-Theme/releases/latest/download/HRBUST-ACM-ICPC-Theme-overleaf.zip&main_document=slide.tex)
 
-> **尝鲜 `dev` 分支**：现代化重设计——LuaLaTeX 引擎、Moloch/Jacquenetta 设计语言
-> （白底无导航条、细进度条、统一左竖条 callout、深色章节页），保留山大红与校徽。
-> 本 `main` 分支为经典稳定版。
+基于 [ShinoharaHaruna/SDU-Beamer-Theme](https://github.com/ShinoharaHaruna/SDU-Beamer-Theme) 的经典 `main` 分支定制。
+保留原版的 16:9 页面、smoothbars 顶部导航、圆点进度、自动章节目录、三段页脚和代码框样式，替换校徽、队名与配色。
 
-SDU 的 Beamer 主题，用于学术报告、论文和演讲。
+[English](README_EN.md)
 
-请随时提交问题或提交 PR。如果该项目有帮助，欢迎 Star⭐️。
+## 下载与在线使用
 
-[English version](./README_EN.md)
+- [最新发布](https://github.com/ryx1447368303-spec/HRBUST-ACM-ICPC-Beamer-Theme/releases/latest)：下载已编译 PDF 与源码包。
+- [完整源码包](https://github.com/ryx1447368303-spec/HRBUST-ACM-ICPC-Beamer-Theme/releases/latest/download/HRBUST-ACM-ICPC-Theme.zip)：包含原模板字体、完整指南和起步示例，适合保留原有字体风格。
+- [Overleaf 精简包](https://github.com/ryx1447368303-spec/HRBUST-ACM-ICPC-Beamer-Theme/releases/latest/download/HRBUST-ACM-ICPC-Theme-overleaf.zip)：使用 Fandol 字体，无须 biber。上传后选择 **XeLaTeX**。
+- [起步示例 PDF](template.pdf) · [完整排版指南 PDF](slide.pdf)
 
 ## 预览
 
-![main_page](./img/README/main_page.png)
+![封面](img/README/main_page.png)
 
-![instance1](./img/README/instance1.png)
+![内容块与公式](img/README/instance1.png)
 
-![instance2](./img/README/instance2.png)
+![代码页](img/README/instance2.png)
 
-## 使用方法
+- `template.pdf`：可以直接用于算法讲解、训练总结的起步示例。
+- `slide.pdf`：完整排版指南，包含列表、公式、定理、表格、插图、代码与参考文献。
 
-1. 如果您的软件环境尚未准备好，请查看*王然*的 [一份简短的关于 LaTeX 安装的介绍](https://mirror.macomnet.net/pub/CTAN/info/install-latex-guide-zh-cn/install-latex-guide-zh-cn.pdf) 或者这篇 [南方科技大学的 LaTeX 指南](https://niko.cra.moe/uploads/short-url/9a47N0ThHXRb6em95R7422y8v7b.pdf).
-2. 一些基本的 LaTeX 语法规则也包含在上面的文档中。如果您有任何问题，请先尝试搜索，百试不爽。
-3. 克隆此存储库，然后您可以对其进行任何修改！
+## 快速开始
 
-提示：由 LaTeX Beamer 生成的幻灯片的文档格式为 `pdf`，因此有时与山大的某些课程要求不兼容，它们通常要求 `ppt / pptx` 文件。所以不妨试试 [pdf2pptx](https://github.com/intMojIBakE/pdf2pptx) 或者 [BeamerStyleSlides](https://github.com/wzpan/BeamerStyleSlides)！
-
----
-
-### 编译
-
-推荐直接使用 `latexmk`，仓库已附带 `.latexmkrc`（指定 XeLaTeX、SyncTeX 与主文档），它会自动调用 `biber` 并重复编译直至收敛：
+下载发布包，或克隆仓库：
 
 ```bash
-latexmk
+git clone https://github.com/ryx1447368303-spec/HRBUST-ACM-ICPC-Beamer-Theme.git
+cd HRBUST-ACM-ICPC-Beamer-Theme
 ```
 
-手动等价的编译链如下（本项目按 `biber` 配置参考文献，不推荐使用 `bibtex`）：
+1. 编辑 `template.tex`，修改标题、汇报人、日期和正文。
+2. 使用 **XeLaTeX** 编译。仓库字体由文件路径加载，无须手动安装。
+3. 有 TeX Live / MiKTeX 的环境下，在项目目录运行：
 
-```bash
-xelatex slide.tex
-biber slide
-xelatex slide.tex
-xelatex slide.tex
+```powershell
+latexmk template.tex
 ```
 
-第一遍 `xelatex` 生成 `.bcf`，`biber` 据此生成 `.bbl`；后两遍 `xelatex` 依次插入参考文献并收敛目录、交叉引用与页码。
+Windows PowerShell 7 也可以运行以下脚本，同时编译起步模板与完整指南：
 
-对于 Visual Studio Code 用户，如果不想安装 `TeXstudio`，可以安装插件 `LaTeX Workshop`，在 VS Code 中直接编写 LaTeX。
-
-在 `Settings.json` 中找到并修改以下配置：
-
-```json
-"latex-workshop.latex.tools": [
-    {
-        "name": "biber",
-        "command": "biber",
-        "args": [
-            "%DOCFILE%"
-        ]
-    },
-    {
-        "name": "xelatex",
-        "command": "xelatex",
-        "args": [
-            "-synctex=1",
-            "-interaction=nonstopmode",
-            "%DOC%"
-        ],
-    },
-    ……
-],
-
-"latex-workshop.latex.recipes": [
-    {
-        "name": "xelatex -> biber -> xelatex * 2",
-        "tools": [
-            "xelatex",
-            "biber",
-            "xelatex",
-            "xelatex",
-        ]
-    },
-    ……
-]
+```powershell
+.\build.ps1
 ```
 
-### 字体
+仅编译起步模板：
 
-> Update 2025/03/03: 在 fonts 目录下添加了
->
-> 1. 落霞孤鹜字体。本项目不持有任何相关版权，依据 <https://github.com/lxgw/LxgwWenKai#%E8%AE%B8%E5%8F%AF> 使用
-> 2. Arial 字体，使用 GitHub Actions 编译意味着用户接受 Microsoft 的 EULA，以使用 Arial 字体。本项目不持有相关任何版权。
-> 3. Sarasa Mono SC 字体。仓库地址：<https://github.com/be5invis/Sarasa-Gothic>；本项目不持有相关任何版权。
+```powershell
+.\build.ps1 -Document template
+```
 
-在 `slide.tex` 的开头，有以下配置：
+手动编译起步模板需要两遍，以收敛目录和页码：
+
+```powershell
+xelatex template.tex
+xelatex template.tex
+```
+
+完整指南使用 `biblatex` / `biber`，运行 `latexmk slide.tex` 会自动处理。
+
+## 文档信息
 
 ```latex
-% 字体设置 / Font settings
-\usepackage{fontspec} % 字体选择 / Font selection
-\usepackage{xeCJK} % 中文字体支持 / Chinese font support
+\documentclass[aspectratio=169]{beamer}
+\input{fonts-setup.tex}
+\usetheme{HRBUST}
 
-% 设置中文字体 / Set Chinese fonts
-\setCJKsansfont[AutoFakeBold]{LXGW WenKai}
-\setCJKmainfont{LXGW WenKai}
-\setCJKmonofont{Sarasa Mono SC}
-
-% 设置英文字体 / Set English fonts
-\setmainfont{Times New Roman} % 主字体 / Main font
-\setsansfont{Arial} % 无衬线字体 / Sans-serif font
+\title[算法训练与竞赛交流]{哈尔滨理工大学 ACM-ICPC 集训队}
+\subtitle{本次训练主题}
+\author[汇报人简称]{汇报人姓名}
+\institute[哈理工集训队]{哈尔滨理工大学 ACM-ICPC 集训队}
+\date{\today}
 ```
 
-通常需要根据自己的需求修改这些配置。如果使用 Linux，可以通过 `fc-list` 命令查看系统中已安装的字体，或者 `fc-list :lang=zh` 寻找中文字体。
+方括号中的简称用于页脚，长名称用于封面。保持页脚简称简洁即可避免挤占空间。
+封面在 `\titlepage` 后使用 `\hrbustlogo`，也可以通过 `\hrbustlogo[1.5cm]` 设置宽度，校徽比例始终保留。
+原来的 `\usetheme{SDU}`、`\usepackage{SDU}` 与 `peaking` 颜色名仍兼容。
 
-## 有用的网站
+## 配色
 
-- 在线创建 LaTeX 表格：<https://www.tablesgenerator.com/>
-- LaTeX 画图画表常用命令：<https://en.wikibooks.org/wiki/LaTeX/Floats,_Figures_and_Captions#Tip>
+所有主题颜色集中在 `beamercolorthemeHRBUST.sty`。
 
-## Overleaf 模板
+| 用途 | 色值 | 颜色名 |
+| --- | --- | --- |
+| 校方科技蓝，标题、导航、普通内容块 | `#005BAC` | `hrbustblue` |
+| 深海军蓝，页脚两翼与链接 | `#123352` | `hrbustnavy` |
+| 正文 | `#243448` | `hrbustink` |
+| 次要文字与代码注释 | `#61768C` | `hrbustmuted` |
+| 示例与代码字符串 | `#006D77` | `hrbustteal` |
+| 注意事项与强调 | `#A35D08` | `hrbustamber` |
+| 普通内容块的浅蓝底色 | `#EEF5FC` | `hrbustpale` |
 
-完整版 `slide.tex` 超出 Overleaf 免费计划的编译时限，主要表现为编译时间过长被系统限制。实测结论：免费版的主要瓶颈是 `biblatex/biber` 与 CJK 字体缓存这类一次性开销，而非文档本身复杂度；超时后多按几次 Recompile 有机会通过，因为字体缓存会保留在项目内。
+校徽使用学校官网原图，来源与标准色依据见 [校徽说明](img/branding/README.md)。
 
-每个 release 附带两个预打包的 Overleaf 精简包（由 GitHub Actions 自动生成），点击即可直接在 Overleaf 中打开：
+## 字体
 
-- [![Open in Overleaf](https://img.shields.io/badge/Open%20in-Overleaf-47A141?logo=overleaf&logoColor=white)](https://www.overleaf.com/docs?snip_uri=https://github.com/ShinoharaHaruna/SDU-Beamer-Theme/releases/latest/download/SDU-Beamer-Theme-overleaf-xelatex.zip&main_document=slide.tex) XeLaTeX 变体，Fandol 字体，中文任意位置可用，推荐。打开后需将 Menu → Compiler 切换为 XeLaTeX（Overleaf 默认 pdfLaTeX）
-- [![Open in Overleaf](https://img.shields.io/badge/Open%20in-Overleaf%20(pdfLaTeX)-47A141?logo=overleaf&logoColor=white)](https://www.overleaf.com/docs?snip_uri=https://github.com/ShinoharaHaruna/SDU-Beamer-Theme/releases/latest/download/SDU-Beamer-Theme-overleaf-pdflatex.zip&main_document=slide.tex) pdfLaTeX 变体，与默认编译器一致，开箱即用
+`fonts-setup.tex` 直接读取仓库中的 LXGW WenKai 与 Sarasa Mono SC，保留原模板的字体风格。
+英文优先使用 Times New Roman / Arial，缺失时回退至 TeX Gyre Termes / Heros。
+移除 `fonts/` 后会自动使用 TeX Live / Overleaf 自带的 Fandol 中文字体。
+字体文件遵循其各自许可证，见 `fonts/OFL.txt`。
 
-仓库附带 `pack_overleaf.sh`，可生成适配免费版的精简包，已验证可编译的组合：
+## Overleaf 打包
 
-```bash
-./pack_overleaf.sh --no-bib              # XeLaTeX 精简包, Fandol 字体, 推荐
-./pack_overleaf.sh --pdflatex --no-bib   # pdfLaTeX 精简包, CJKutf8+gbsn, 备用
+生成精简起步包，使用 Fandol 字体、无需 biber：
+
+```powershell
+.\pack-overleaf.ps1
 ```
 
-pdfLaTeX 变体的限制：中文仅限正文，标题/章节名/作者信息需用英文，且只有单一宋体字重。
+默认输出 `dist/HRBUST-ACM-ICPC-Theme-overleaf.zip`。上传后设置：
 
-完整体验（参考文献、代码高亮、TikZ 示例、落霞孤鹜/更纱字体）**推荐使用仓库自带的 GitHub Actions 自动构建 PDF**，或直接本地 `latexmk` 构建。Overleaf 免费版下本模板功能受限：仅限精简示例、无参考文献、字体缩减为 Fandol/gbsn。`pack_overleaf.sh --help` 查看全部选项与免费版可用性说明。
+- Main document：`slide.tex`
+- Compiler：**XeLaTeX**
 
-## 感谢
+打包时起步模板会命名为 `slide.tex`，原始 `template.tex` 也一并保留。
 
-- SDU-Beamer-Theme 的原作者是 *Ura*，然而缺少更多相关信息。在 *overleaf* 上查看原项目: <https://www.overleaf.com/latex/templates/sdu-beamer-theme/vfnkydnwgrvc>
-- 山大的 `eps` 矢量图校徽来自于：<https://github.com/jshmsjh/SDU-Beamer-Theme>
-- 本作品基于 [PKU-Beamer-Theme](https://github.com/inFaaa/PKU-Beamer-Theme)。
-- [PKU-Beamer-Theme](https://github.com/inFaaa/PKU-Beamer-Theme) 基于 [THU-Beamer-Theme](https://github.com/tuna/THU-Beamer-Theme)。对上述所有项目表示感谢。
+需要保留原字体时：
 
-## 协议
+```powershell
+.\pack-overleaf.ps1 -WithFonts -Output dist/HRBUST-ACM-ICPC-Theme-with-fonts.zip
+```
 
-该仓库遵循 *MIT 协议*。
+需要完整排版指南、插图与参考文献时使用 `-Full`。带字体或完整指南的包体积更大，编译耗时也更长。
+Python / Linux / macOS 可运行 `python3 pack_overleaf.py`，或 `./pack_overleaf.sh`。
+本定制版以 XeLaTeX 为统一编译方式。
+
+包含已编译 PDF 的完整发布包：
+
+```powershell
+python pack_overleaf.py --full --with-fonts --include-pdfs -o dist/HRBUST-ACM-ICPC-Theme.zip
+```
+
+## GitHub Actions
+
+- 推送到 `main`、提交 Pull Request 或手动运行时，自动编译两份示例并检查版面警告。生成的 PDF 可从 Actions 页下载。
+- 发布 Release 时，自动重新编译，上传两份 PDF、完整源码包与 Overleaf 精简包。
+- 自动构建使用 TeX Live 2026，直接读取仓库字体。构建结果保存在 artifacts 和 Release 附件中。
+
+## 反馈与贡献
+
+编译问题、版面问题或改进建议，请提交到[本仓库 Issues](https://github.com/ryx1447368303-spec/HRBUST-ACM-ICPC-Beamer-Theme/issues)。
+报告问题时请附编译引擎、错误信息及最小示例。提交修改前请阅读 [贡献说明](CONTRIBUTING.md)。
+版本变化见 [更新记录](CHANGELOG.md)。
+
+## 项目结构
+
+| 文件 | 用途 |
+| --- | --- |
+| `template.tex` | 集训队汇报起步模板 |
+| `slide.tex` / `ref.bib` | 完整排版指南与参考文献 |
+| `beamerthemeHRBUST.sty` | 主题布局、页脚、代码框与校徽命令 |
+| `beamercolorthemeHRBUST.sty` | 统一配色 |
+| `fonts-setup.tex` | 字体加载与回退 |
+| `img/branding/` | 校徽原图与来源 |
+| `build.ps1` | PowerShell 7 编译入口 |
+| `pack-overleaf.ps1` / `pack_overleaf.py` | Overleaf 打包入口 |
+| `SDU.sty` / `beamerthemeSDU.sty` / `beamercolorthemeSDU.sty` | 原主题调用兼容层 |
+
+## 致谢与许可
+
+本定制版基于 [ShinoharaHaruna/SDU-Beamer-Theme](https://github.com/ShinoharaHaruna/SDU-Beamer-Theme)，
+保留上游 [MIT 许可证](LICENSE)。主题谱系包含 Ura 的 SDU 主题、
+[PKU-Beamer-Theme](https://github.com/inFaaa/PKU-Beamer-Theme) 与
+[THU-Beamer-Theme](https://github.com/tuna/THU-Beamer-Theme)。
+校徽权利归哈尔滨理工大学所有，本模板为集训队使用场景的定制版本。

@@ -17,3 +17,9 @@
 *-eps-converted-to.pdf
 img/Example/SDU.pdf
 .pi/
+
+# Local previews, portable build tools and distributable archives
+tmp/
+dist/
+__pycache__/
+*.pyc

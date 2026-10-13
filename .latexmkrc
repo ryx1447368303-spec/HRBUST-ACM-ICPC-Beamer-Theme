@@ -3,7 +3,7 @@
 
 $pdf_mode = 5;  # 5 = xelatex
 
-$xelatex = 'xelatex -interaction=nonstopmode -synctex=1 -file-line-error %O %S';
+$xelatex = 'xelatex -interaction=nonstopmode -halt-on-error -synctex=1 -file-line-error %O %S';
 
 # 默认编译主文档 / Default target
-@default_files = ('slide.tex');
+@default_files = ('slide.tex', 'template.tex');

@@ -1,87 +1,42 @@
-name: Compile PDF slides
+name: Build Beamer PDFs
 
 on:
   push:
-    branches:
-      - main
+    branches: [main]
+    paths-ignore: ['**.md', 'docs/**', '.github/ISSUE_TEMPLATE/**', '.github/PULL_REQUEST_TEMPLATE.md']
+  pull_request:
+    paths-ignore: ['**.md', 'docs/**', '.github/ISSUE_TEMPLATE/**', '.github/PULL_REQUEST_TEMPLATE.md']
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: build-${{ github.ref }}
+  cancel-in-progress: true
 
 jobs:
   build:
     runs-on: ubuntu-latest
-
+    timeout-minutes: 20
     steps:
-      - name: Checkout code
-        uses: actions/checkout@v4
-
-      - name: Cache LaTeX Environment
-        uses: awalsh128/cache-apt-pkgs-action@latest
+      - uses: actions/checkout@v6
+      - name: Compile starter and full guide
+        uses: xu-cheng/latex-action@v4
         with:
-          packages: >-
-            texlive-latex-base texlive-xetex texlive-extra-utils
-            texlive-fonts-recommended texlive-fonts-extra lmodern
-            texlive-latex-extra biber fontconfig latex-cjk-all
-            texlive-pstricks texlive-bibtex-extra texlive-science
-
-      - name: Reconfigure tex-common
-        run: |
-          sudo dpkg --configure -a
-
-      - name: Install latexmk
-        run: |
-          sudo apt-get update
-          sudo apt-get install -y latexmk
-
-      - name: Install Custom Fonts
-        run: |
-          set -e
-          # 安装 Microsoft 字体 (包括 Arial)
-          echo "ttf-mscorefonts-installer \
-            msttcorefonts/accepted-mscorefonts-eula select true" \
-            | sudo debconf-set-selections
-          sudo apt-get install -y ttf-mscorefonts-installer
-
-          # 复制字体文件到系统字体目录 (假设字体文件在仓库的 fonts/ 目录下)
-          sudo mkdir -p /usr/share/fonts/opentype/custom-fonts
-          cp fonts/*.ttf /usr/share/fonts/opentype/custom-fonts/
-
-          # 更新字体缓存
-          sudo fc-cache -f
-
-      - name: Check Font List
-        run: |
-          fc-list | grep -iE 'lxgw|sarasa|arial|times'
-
-      - name: Clean Auxiliary Files
-        run: |
-          latexmk -C slide.tex || true
-
-      - name: Compile LaTeX document
-        run: |
-          set -e
-          if [ ! -f "slide.tex" ]; then
-            echo "Error: slide.tex not found."
-            exit 1
-          fi
-          # latexmk 读取 .latexmkrc：xelatex -> biber -> 重复编译直至收敛
-          latexmk slide.tex
-
-      - name: Upload PDF as artifact
-        uses: actions/upload-artifact@v4
+          root_file: |
+            template.tex
+            slide.tex
+          latexmk_use_xelatex: true
+          texlive_version: '2026'
+      - name: Check layout and fonts
+        run: python3 .github/scripts/check_tex_logs.py template.log slide.log
+      - name: Upload PDFs
+        uses: actions/upload-artifact@v6
         with:
-          name: slide-pdf
-          path: slide.pdf
+          name: HRBUST-ACM-ICPC-PDFs
+          path: |
+            template.pdf
+            slide.pdf
+          if-no-files-found: error
           retention-days: 30
-
-      - name: Commit PDF if changed
-        run: |
-          git config user.name github-actions
-          git config user.email \
-            41898282+github-actions[bot]@users.noreply.github.com
-          git add slide.pdf
-          if git diff --cached --quiet; then
-            echo "PDF unchanged, skip commit."
-          else
-            git commit -m "Auto compile LaTeX by GitHub Actions \
-              $(date -u '+%Y-%m-%d %H:%M UTC')"
-            git push
-          fi

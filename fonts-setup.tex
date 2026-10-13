@@ -1,0 +1,34 @@
+% Keep the original WenKai/Sarasa typography without installing fonts.
+% A small Overleaf package can omit fonts/ and use TeX Live's Fandol instead.
+\usepackage{fontspec}
+\usepackage{xeCJK}
+\IfFileExists{fonts/LXGWWenKai-Regular.ttf}{%
+  \setCJKmainfont{LXGWWenKai-Regular.ttf}[
+    Path=fonts/, BoldFont=LXGWWenKai-Medium.ttf,
+    ItalicFont=LXGWWenKai-Regular.ttf, ItalicFeatures={FakeSlant=0.15}]
+  \setCJKsansfont{LXGWWenKai-Regular.ttf}[
+    Path=fonts/, BoldFont=LXGWWenKai-Medium.ttf,
+    ItalicFont=LXGWWenKai-Regular.ttf, ItalicFeatures={FakeSlant=0.15}]
+  \setCJKmonofont{SarasaMonoSC-Regular.ttf}[
+    Path=fonts/, ItalicFont=SarasaMonoSC-Regular.ttf,
+    ItalicFeatures={FakeSlant=0.15}]
+}{%
+  \setCJKmainfont{FandolSong-Regular.otf}[
+    BoldFont=FandolSong-Bold.otf, ItalicFont=FandolKai-Regular.otf]
+  \setCJKsansfont{FandolHei-Regular.otf}[
+    BoldFont=FandolHei-Bold.otf, ItalicFont=FandolHei-Regular.otf,
+    ItalicFeatures={FakeSlant=0.15}]
+  \setCJKmonofont{FandolFang-Regular.otf}[
+    ItalicFont=FandolFang-Regular.otf, ItalicFeatures={FakeSlant=0.15}]
+}
+\IfFontExistsTF{Times New Roman}{\setmainfont{Times New Roman}}{%
+  \setmainfont{texgyretermes-regular.otf}[
+    BoldFont=texgyretermes-bold.otf, ItalicFont=texgyretermes-italic.otf,
+    BoldItalicFont=texgyretermes-bolditalic.otf]}
+\IfFontExistsTF{Arial}{\setsansfont{Arial}}{%
+  \setsansfont{texgyreheros-regular.otf}[
+    BoldFont=texgyreheros-bold.otf, ItalicFont=texgyreheros-italic.otf,
+    BoldItalicFont=texgyreheros-bolditalic.otf]}
+\setmonofont{lmmono10-regular.otf}[
+  BoldFont=lmmonolt10-bold.otf, ItalicFont=lmmono10-italic.otf,
+  BoldItalicFont=lmmonolt10-boldoblique.otf]

@@ -1,0 +1,130 @@
+% !TeX program = xelatex
+% 修改标题、汇报人和正文即可开始使用。XeLaTeX 编译两遍。
+\documentclass[aspectratio=169]{beamer}
+\input{fonts-setup.tex}
+\usetheme{HRBUST}
+
+\title[算法训练与竞赛交流]{哈尔滨理工大学 ACM-ICPC 集训队}
+\subtitle{算法训练与竞赛交流}
+\author[ACM-ICPC]{汇报人}
+\institute[哈理工集训队]{哈尔滨理工大学 ACM-ICPC 集训队}
+\date{\today}
+\hypersetup{colorlinks=true,linkcolor=.,urlcolor=hrbustnavy}
+
+\begin{document}
+
+\begin{frame}
+  \titlepage
+  \begin{figure}[htpb]
+    \centering
+    \hrbustlogo
+  \end{figure}
+\end{frame}
+
+\begin{frame}
+  \tableofcontents
+\end{frame}
+
+\section{问题与思路}
+
+\begin{frame}{单源最短路}
+  给定一个含 \(n\) 个点、\(m\) 条边的有向图，边权均为非负数。
+  求从起点 \(s\) 到每个点的最短距离。
+  \begin{block}{距离定义}
+    \(\mathrm{dist}[v]\) 表示从 \(s\) 到 \(v\) 的当前最短距离。
+    初始令 \(\mathrm{dist}[s]=0\)，其余距离为 \(\infty\)。
+  \end{block}
+  \begin{itemize}
+    \item 维护一个按距离排序的优先队列
+    \item 每次取出距离最小的点，尝试更新相邻点的距离
+  \end{itemize}
+\end{frame}
+
+\begin{frame}{状态更新与适用条件}
+  \begin{block}{松弛操作}
+    对边 \((u,v)\) 及其权重 \(w\)，更新
+    \[
+      \mathrm{dist}[v] = \min\bigl(\mathrm{dist}[v],\mathrm{dist}[u]+w\bigr).
+    \]
+  \end{block}
+  \begin{alertblock}{适用条件}
+    Dijkstra 算法要求边权非负。距离与边权应使用足够大的整数类型。
+  \end{alertblock}
+  \begin{exampleblock}{队列处理}
+    若弹出的距离与 \(\mathrm{dist}[u]\) 不同，跳过该过期状态。
+  \end{exampleblock}
+\end{frame}
+
+\section{实现与复杂度}
+
+\begin{frame}[fragile]{核心实现}
+  \begin{lstlisting}[language=C++,basicstyle=\ttfamily\footnotesize]
+using State = pair<long long, int>;
+priority_queue<State, vector<State>, greater<State>> pq;
+dist[s] = 0;
+pq.push({0, s});
+while (!pq.empty()) {
+    auto [d, u] = pq.top(); pq.pop();
+    if (d != dist[u]) continue;
+    for (auto [v, w] : adj[u]) {
+        if (d + w < dist[v]) {
+            dist[v] = d + w;
+            pq.push({dist[v], v});
+        }
+    }
+}
+  \end{lstlisting}
+\end{frame}
+
+\begin{frame}{复杂度与边界检查}
+  \begin{table}
+    \centering
+    \begin{tabular}{ll}
+      \toprule
+      项目 & 说明 \\
+      \midrule
+      时间复杂度 & \(O((n+m)\log(n+m))\)，二叉堆并允许重复入队 \\
+      空间复杂度 & \(O(n+m)\)，邻接表与优先队列 \\
+      不可达顶点 & 距离保持为 \(\infty\) \\
+      整数范围 & 使用 \texttt{long long}，避免距离相加溢出 \\
+      \bottomrule
+    \end{tabular}
+  \end{table}
+  \begin{itemize}
+    \item 检查重边、零权边以及只有一个点的情况
+    \item 按题目要求输出不可达状态
+  \end{itemize}
+\end{frame}
+
+\section{训练复盘}
+
+\begin{frame}{训练记录}
+  \begin{columns}[t]
+    \begin{column}{0.48\textwidth}
+      \begin{block}{本次训练}
+        \begin{itemize}
+          \item 题目与关键观察
+          \item 正确性证明
+          \item 实现中的边界条件
+        \end{itemize}
+      \end{block}
+    \end{column}
+    \begin{column}{0.48\textwidth}
+      \begin{exampleblock}{后续练习}
+        \begin{itemize}
+          \item 对照小规模暴力算法检查
+          \item 记录错误原因与修正方法
+          \item 补充同类题目
+        \end{itemize}
+      \end{exampleblock}
+    \end{column}
+  \end{columns}
+\end{frame}
+
+\begin{frame}
+  \begin{center}
+    {\Huge\calligra Thanks!}
+  \end{center}
+\end{frame}
+
+\end{document}
