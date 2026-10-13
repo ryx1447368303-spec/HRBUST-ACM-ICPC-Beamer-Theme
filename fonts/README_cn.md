@@ -12,5 +12,9 @@
 `OFL.txt` 为 SIL Open Font License 1.1 的完整文本，对上述两个字体项目均适用。
 
 另外，`slide.tex` 中的英文字体 Times New Roman 与 Arial 为 Microsoft 商业字体，
-**不包含**在本仓库中。本地使用时需系统已安装；GitHub Actions 通过
-`ttf-mscorefonts-installer` 安装，使用该 CI 即表示接受 Microsoft 的 EULA。
+**不包含**在本仓库中。`fonts-setup.tex` 在系统已安装时使用它们，缺失时
+自动读取 TeX Live 的 TeX Gyre Termes / Heros。GitHub Actions 使用该回退方案，
+工作流不安装 Microsoft 字体。
+
+文楷与更纱字体由本目录文件直接加载，无须安装到系统。
+Overleaf 精简包省略本目录，改用 TeX Live 自带的 Fandol 字体。

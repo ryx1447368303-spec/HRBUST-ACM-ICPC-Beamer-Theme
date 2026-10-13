@@ -15,6 +15,10 @@ applies to both font projects above.
 
 In addition, the English fonts used in `slide.tex` — Times New Roman and
 Arial — are Microsoft commercial fonts and are **not** included in this
-repository. For local use, they must already be installed on your system.
-The GitHub Actions workflow installs them via `ttf-mscorefonts-installer`;
-using that CI implies acceptance of Microsoft's EULA.
+repository. `fonts-setup.tex` uses them when they are installed on your system,
+and otherwise loads TeX Gyre Termes / Heros from TeX Live. GitHub Actions uses
+this fallback; the workflow does not install Microsoft fonts.
+
+WenKai and Sarasa are loaded directly from the files in this directory, so no
+system installation is required. Compact Overleaf packages omit this directory
+and use TeX Live's Fandol fonts instead.
